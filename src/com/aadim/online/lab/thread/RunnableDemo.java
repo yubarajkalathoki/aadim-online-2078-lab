@@ -20,9 +20,11 @@ public class RunnableDemo {
 		cr.start();
 
 		try {
-			cs.join();
-			cr.join();
+//			cs.join();
+//			cr.join();
 
+			Thread.sleep(2000);
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -82,6 +84,7 @@ class Account {
 		
 		if (hasEnoughBalance(debitAmount)) {
 			balance = balance - debitAmount;
+			System.out.println("Balance after withdrawal: "+balance);
 			return true;
 		} else {
 			System.out.println(Thread.currentThread().getName() + " Insufficient balance.");
