@@ -23,8 +23,8 @@ public class RunnableDemo {
 //			cs.join();
 //			cr.join();
 
-			Thread.sleep(2000);
-			
+			Thread.sleep(10000);
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -73,18 +73,25 @@ class ChequeRequest extends Thread {
 class Account {
 	public static int balance = 10000;
 
-	 boolean  withdraw(int debitAmount) {
-		 // This is the line I've added after our class
+	/**
+	 * Using this <code>synchronized</code> keyword it guarantees the only one
+	 * execution at a particular time.
+	 * 
+	 * @param debitAmount
+	 * @return true if withdrawal is success otherwise false.
+	 */
+	synchronized boolean withdraw(int debitAmount) {
+		// This is the line I've added after our class
 		try {
-			//waiting for a second 
+			// waiting for a second
 			Thread.sleep(1000L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		if (hasEnoughBalance(debitAmount)) {
 			balance = balance - debitAmount;
-			System.out.println("Balance after withdrawal: "+balance);
+			System.out.println("Balance after withdrawal: " + balance);
 			return true;
 		} else {
 			System.out.println(Thread.currentThread().getName() + " Insufficient balance.");

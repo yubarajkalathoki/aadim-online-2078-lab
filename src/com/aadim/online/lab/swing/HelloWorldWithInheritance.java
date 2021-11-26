@@ -1,4 +1,4 @@
-package unit11;
+package com.aadim.online.lab.swing;
 
 import javax.swing.JFrame;
 
